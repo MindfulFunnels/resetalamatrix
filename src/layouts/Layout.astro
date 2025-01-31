@@ -1,0 +1,42 @@
+---
+import clientData from "../data/config";
+const { title } = clientData;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{title}</title>
+    <script
+      is:inline
+      src='https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js'
+    ></script>
+    <link rel='stylesheet' href='/src/assets/global.css' />
+  </head>
+  <body class='flex items-center justify-center min-h-screen bg-background'>
+    <div class='w-full px-4 max-w-7xl'>
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif; /* Asegúrate de incluir la fuente */
+    background-color: #000; /* Fondo negro */
+  }
+</style>

@@ -1,0 +1,13 @@
+---
+import clientData from "../data/config";
+const { day, month, hour, year } = clientData.eventDate;
+---
+
+<div class='flex flex-col'>
+  <div class='flex flex-row gap-2'>
+    <h2 class={`text-primary text-2xl`}>{day}</h2>
+    <h2 class={`text-primary text-2xl`}>{month}</h2>
+    <h2 class={`text-primary text-2xl`}>{year}</h2>
+    <h2 class={`text-primary text-2xl`}>{hour}hs</h2>
+  </div>
+</div>

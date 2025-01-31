@@ -1,0 +1,34 @@
+{
+  "name": "resetalamatrix",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.1.6",
+    "@astrojs/tailwind": "^5.1.5",
+    "@getbrevo/brevo": "^1.0.1",
+    "@libsql/client": "^0.14.0",
+    "@midudev/tailwind-animations": "^0.1.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "astro": "^5.1.9",
+    "dotenv": "^16.4.7",
+    "flowbite": "^3.0.0",
+    "landing-page": "file:",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resetalamatrix": "file:",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@astrojs/vercel": "^8.0.4"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.2.2"
+  }
+}

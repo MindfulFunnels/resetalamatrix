@@ -1,0 +1,12 @@
+---
+import clientData from "../data/config";
+const { ctaButton } = clientData;
+---
+
+<button
+  class='bg-primary text-white p-4 rounded-lg text-2xl transition-all duration-300 hover:bg-secondary hover:scale-110 hover:text-primary'
+>
+  <a href='#register'>
+    {ctaButton.text}
+  </a>
+</button>
