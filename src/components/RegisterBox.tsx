@@ -74,15 +74,6 @@ export default function RegisterBox() {
           placeholder='Tu email*'
           className='w-full p-2 border rounded'
         />
-        <input
-          ref={emailRef}
-          type='tel'
-          id='tel'
-          name='tel'
-          required
-          placeholder='Tu celular*'
-          className='w-full p-2 border rounded'
-        />
         <button
           type='submit'
           className='p-2 text-white border border-black rounded hover:animate-pop bg-accent'
