@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const payload = {
-      sender: { name: "Lucas", email: "gallardolucas003@gmail.com" },
+      sender: { name: "Mindful funnels", email: "mindfulfunnels@gmail.com" },
       to: [{ email, name }],
       subject: `¡Hola ${name}! Bienvenido a ${title}`,
       htmlContent: `
