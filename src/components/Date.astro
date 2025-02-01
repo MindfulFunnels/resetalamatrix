@@ -3,11 +3,73 @@ import clientData from "../data/config";
 const { day, month, hour, year } = clientData.eventDate;
 ---
 
-<div class='flex flex-col'>
-  <div class='flex flex-row gap-2'>
-    <h2 class={`text-primary text-2xl`}>{day}</h2>
-    <h2 class={`text-primary text-2xl`}>{month}</h2>
-    <h2 class={`text-primary text-2xl`}>{year}</h2>
-    <h2 class={`text-primary text-2xl`}>{hour}hs</h2>
+<div class='flex flex-col items-center'>
+  <div class='flex flex-wrap justify-center gap-2 text-center'>
+    <h2
+      class='text-white text-3xl lg:text-4xl'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      {day}
+    </h2>
+    <h2
+      class='text-white text-3xl lg:text-4xl'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      /
+    </h2>
+    <h2
+      class='text-white text-3xl lg:text-4xl'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      {month}
+    </h2>
+    <h2
+      class='text-white text-3xl lg:text-4xl'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      /
+    </h2>
+    <h2
+      class='text-white text-3xl lg:text-4xl'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      {year}
+    </h2>
+    <h2
+      class='text-white text-3xl lg:text-4xl ml-4'
+      style='text-shadow: 
+        0 0 2px #801FC6, 
+        0 0 4px #801FC6, 
+        0 0 8px #801FC6, 
+        0 0 12px #801FC6, 
+        0 0 16px #801FC6'
+    >
+      {hour}hs
+    </h2>
   </div>
 </div>

@@ -5,15 +5,68 @@ const { history } = clientData;
 ---
 
 <div
-  class='flex flex-col sm:flex-row items-center justify-center space-y-4 gap-4'
+  class='grid items-center justify-center grid-cols-1 space-y-4 md:grid-cols-2 md:flex-row'
 >
-  <div
-    class='flex flex-col w-[400px] sm:w-[600px] text-xs sm:text-xl md:text-2xl lg:text-3xl p-10'
-  >
-    <h1>{history.title}</h1>
-    <p>
-      {history.text}
-    </p>
+  <div class='flex flex-col items-center justify-center gap-4'>
+    <h2
+      class='mb-8 text-3xl font-bold text-center text-white sm:text-4xl md:text-5xl lg:text-6xl'
+      style='text-shadow: 
+    0 0 2px #801FC6, 
+    0 0 4px #801FC6, 
+    0 0 8px #801FC6, 
+    0 0 12px #801FC6, 
+    0 0 16px #801FC6'
+    >
+      Soy Luis Garre
+    </h2>
+    <div class='text-left'>
+      <div class='flex flex-col gap-4 text-base md:text-xl lg:text-2xl'>
+        <h3>
+          Me dedico a despertar consciencias y ayudar a las personas a ver donde
+          otros no ven.
+        </h3>
+
+        <h3>
+          Descubrí mi propósito espiritual gracias a la intuición y la atención
+          consciente a las señales que el universo ha puesto en mi camino.
+        </h3>
+
+        <h3>
+          Mi tarea espiritual es la de un reprogramador mental al servicio de la
+          luz. Ayudo a las personas a desprogramarse de los paradigmas impuestos
+          por el sistema y a liberar su verdadero poder como creadores de su
+          realidad.
+        </h3>
+
+        <h3>
+          En el transcurso de mi camino, he ayudado a cientos de personas de
+          manera directa y a cientes de miles más a través de mis redes
+          sociales, donde comparto mensajes de empoderamiento y transformación.
+        </h3>
+
+        <h3>
+          A través de mis terapias, libros, charlas y conferencias, guío a
+          quienes buscan empoderarse y liberarse de creencias limitantes para
+          vivir con mayor libertad, energía y alineados con el plan divino de la
+          creación.
+        </h3>
+
+        <h3>
+          Mi objetivo es ayudarte a vibrar en niveles superiores de energía y a
+          elegir conscientemente trabajar desde el amor y el bien colectivo.
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class='flex flex-col items-center justify-center gap-4'>
+    <img
+      src='/luis-history.jpg'
+      class='h-[550px] rounded-lg border-4 border-[#801FC6] transition-transform duration-300 hover:animate-tilt'
+    />
+    <img
+      src='/logo.webp'
+      alt=''
+      class='w-[400px] rounded-lg border-4 border-[#801FC6] transition-transform duration-300 hover:animate-tilt'
+    />
   </div>
 </div>
-<img src={history.image} alt='' class='h-[200px]' />

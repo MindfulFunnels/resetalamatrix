@@ -1,24 +1,24 @@
 ---
-//PointLearning.astro
-import eye from "../assets/eye.svg";
+const { title } = Astro.props;
 ---
 
 <div
-  class='flex flex-row items-center justify-center text-sm rounded sm:text-base md:text-lg lg:text-xl bg-primary/20'
+  class='relative flex flex-col justify-center items-start gap-4 text-white bg-gradient-to-r from-[#3A125A]/80 to-[#2C0A4A]/80 hover:from-[#4B166E]/90 hover:to-[#381259]/90 transition-all duration-300 rounded-xl p-6 shadow-lg'
 >
-  <svg
-    class='mr-2 size-32'
-    xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 24 24'
-    fill='none'
-    stroke='currentColor'
-    stroke-width='2'
-    stroke-linecap='round'
-    stroke-linejoin='round'
-    ><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path
-      d='M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0'></path><path
-      d='M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6'
-    ></path></svg
+  <!-- Línea decorativa -->
+  <div class='absolute top-0 left-4 w-10 h-1 bg-[#A85FE8] rounded-full'></div>
+
+  <h3
+    class='text-lg font-semibold leading-snug sm:text-xl md:text-2xl lg:text-3xl'
   >
-  <slot />
+    {title}
+  </h3>
+  <p class='text-base md:text-xl lg:text-2xl leading-relaxed text-[#D9B3FF]'>
+    <slot />
+    <!-- Detalle adicional al pasar el mouse -->
+    <div
+      class='absolute inset-0 bg-gradient-to-r from-[#A85FE8]/10 via-transparent to-[#A85FE8]/10 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300'
+    >
+    </div>
+  </p>
 </div>

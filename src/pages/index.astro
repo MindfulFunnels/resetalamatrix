@@ -11,36 +11,54 @@ import Footer from "../components/Footer.astro";
 import Testimonies from "../components/Testimonies.astro";
 import Header from "../components/Header.astro";
 import VideosTestimonies from "../components/Videos-testimonies.astro";
+import TakeAway from "../components/TakeAway.astro";
+import AddressedTo from "../components/AddressedTo.astro";
 
 const { title, subtitle, eventDateForCountdown } = clientData;
 ---
 
 <Layout>
-  <div class='flex flex-col items-center w-full gap-10 text-center'>
-    <div class='flex flex-col items-center justify-center gap-10'>
-      <Header title={title} subtitle={subtitle} />
-      <Countdown deadline={eventDateForCountdown} client:load />
-    </div>
-    <div
-      class='flex flex-col items-center justify-center w-full gap-20 lg:flex-row'
-    >
-      <div>
-        <img src='/luis.webp' alt='' class='h-80' />
+  <div class='flex flex-col items-center w-full gap-20 pt-2 text-center'>
+    <div>
+      <div class='flex flex-col items-center justify-center gap-10 pb-10'>
+        <h2
+          class='m-4 text-base text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
+        >
+          Registrate a este <span class='font-bold'>EVENTO ONLINE</span> para aprender
+          a cómo liberarte del sistema antes de que siga limitando tu potencial,
+          elevar tu frecuencia y vivir de tu propósito de vida.
+        </h2>
+        <Countdown deadline={eventDateForCountdown} client:load />
       </div>
       <div
-        class='flex flex-col items-center justify-center gap-2'
-        id='register'
+        class='flex flex-col items-center justify-center w-full gap-10 md:gap-20 lg:flex-row'
       >
-        <Date />
-        <RegisterBox client:only='react' />
+        <div>
+          <img
+            src='/luis.webp'
+            alt=''
+            class='h-[450px] rounded-lg border-4 border-[#801FC6] transition-transform duration-300 hover:rotate-3 hover:scale-105'
+          />
+        </div>
+        <div
+          class='flex flex-col items-center justify-center gap-2'
+          id='register'
+        >
+          <Date />
+          <RegisterBox client:only='react' />
+        </div>
       </div>
     </div>
     <WhatYouWillLearn />
-    <Testimonies />
+    <!-- <Testimonies /> -->
+    <CallAction text='Cambiar mi vida' />
+    <TakeAway />
+    <AddressedTo />
+    <CallAction text='Registrate acá' />
     <VideosTestimonies />
-    <CallAction />
+    <CallAction text='Apuntarme ahora' />
     <History />
-    <CallAction />
-    <Footer />
   </div>
 </Layout>
+
+

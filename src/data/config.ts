@@ -1,5 +1,5 @@
 const config = {
-  title: "RESET A LA MATRIX",
+  title: "Reset a la matrix",
   titleColor: "sepia3",
   subtitle: "",
 
@@ -16,26 +16,26 @@ const config = {
     ],
   },
   eventDate: {
-    day: 10,
+    day: 23,
     month: "Febrero",
     year: 2025,
-    hour: "17:00",
+    hour: "19:00",
   },
-  eventDateForCountdown: "2025-02-10T17:00:00", // Year-Month-DayThours:minutes:seconds
+  eventDateForCountdown: "2025-02-23T19:00:00", // Year-Month-DayThours:minutes:seconds
   contactEmail: "contacto@cliente.com",
   ctaButton: {
     text: "Cambiar mi vida",
     link: "#register",
   },
   history: {
-    title: "Acerca de Luis Garre:",
-    text: "Hola, mi nombre es Luis Garre y me dedico a despertar consciencias y ayudar a ver donde otros no ven. Ese es mi propósito espiritual, el cual descubrí por intuición, pura sincronicidad y atención consciente a esas mismas señales que el propio universo ha ido mostrándome durante toda la vida. ¿Ver el qué? puedes pensar… Ver que los seres humanos somos la luz del mundo y que lo único que nos impide descubrirlo y ejercerlo, con total confianza y alta vibración, son dos motivos principales y bien definidos: El primero es una decisión consciente, individual y responsable para elegir, en total libertad, trabajar a favor del bien y el amor colectivo de toda la humanidad.",
+    title: "Soy Luis Garre",
+    text: "Me dedico a despertar consciencias y ayudar a las personas a ver donde otros no ven. Descubrí mi propósito espiritual gracias a la intuición y la atención consciente a las señales que el universo ha puesto en mi camino. Mi tarea espiritual es la de un reprogramador mental al servicio de la luz. Ayudo a las personas a desprogramarse de los paradigmas impuestos por el sistema y a liberar su verdadero poder como creadores de su realidad. En el transcurso de mi camino, he ayudado a cientos de personas de manera directa y a cientes de miles más a través de mis redes sociales, donde comparto mensajes de empoderamiento y transformación. A través de mis terapias, libros, charlas y conferencias, guío a quienes buscan empoderarse y liberarse de creencias limitantes para vivir con mayor libertad, energía y alineados con el plan divino de la creación. Mi objetivo es ayudarte a vibrar en niveles superiores de energía y a elegir conscientemente trabajar desde el amor y el bien colectivo.",
     image: "/luis-garre.JPEG",
   },
   colors: {
     primary: "#801FC6", // Para títulos y textos principales
     secondary: "#BD68EE", // Para subtítulos o textos secundarios
-    background: "#000000", // Para el fondo
+    background: "#0B001A", // Para el fondo
     accent: "#ff0000", // Para elementos destacados o botones
     highlight: "#F5EBE0", // Para detalles o decoraciones
   },

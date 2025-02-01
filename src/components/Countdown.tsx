@@ -53,19 +53,32 @@ const Countdown = ({ deadline }: { deadline: string }) => {
     );
   }
 
+  const unidades = ["Días", "Horas", "Minutos", "Segundos"]; // Traducción de las unidades
+
   return (
-    <div className='flex items-center justify-center w-full  gap-6 count-down-main'>
+    <div className='flex flex-wrap items-center justify-center w-full gap-2 md:gap-4 lg:gap-6 count-down-main'>
       {["days", "hours", "minutes", "seconds"].map((unit, index) => (
-        <div key={index} className='timer'>
-          <div className="pr-1.5 pl-2 relative bg-primary w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10">
+        <div
+          key={index}
+          className='timer flex flex-col items-center bg-black/60 border border-[#801FC6] rounded-xl shadow-lg py-2 px-4 min-w-[60px] max-w-[80px] md:min-w-[80px] md:max-w-[100px] lg:min-w-[100px] lg:max-w-[120px]'
+        >
+          <div className='flex items-center justify-center w-full text-center'>
             <h3
-              className={`countdown-element ${unit} font-manrope font-semibold text-2xl text-white tracking-[15.36px] max-w-[44px] text-center relative z-20`}
+              className={`countdown-element ${unit} font-manrope font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#FFFFFF] tracking-widest`}
+              style={{
+                textShadow: `
+              0 0 2px #801FC6, 
+              0 0 4px #801FC6, 
+              0 0 8px #801FC6, 
+              0 0 12px #801FC6, 
+              0 0 16px #801FC6`,
+              }}
             >
               {timeLeft[unit as keyof typeof timeLeft]}
             </h3>
           </div>
-          <p className='w-full mt-1 text-sm font-normal text-center text-primary'>
-            {unit}
+          <p className='mt-1 text-xs sm:text-sm md:text-base font-medium text-[#A85FE8] tracking-wide uppercase glow-text'>
+            {unidades[index]}
           </p>
         </div>
       ))}

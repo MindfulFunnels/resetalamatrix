@@ -25,7 +25,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resetalamatrix": "file:",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@astrojs/vercel": "^8.0.4"

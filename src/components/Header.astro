@@ -1,18 +1,28 @@
 ---
-const { title, subtitle } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<div class='flex flex-col gap-4'>
+<div class='flex flex-col gap-4 pt-4'>
   <h1
-    class={`text-primary text-xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl`}
+    class='text-5xl font-bold text-center text-white transition-transform duration-1000 scale-100 sm:text-6xl md:text-7xl lg:text-8xl hover:animate-pulse hover:scale-105'
+    style='text-shadow: 
+    0 0 2px #801FC6, 
+    0 0 4px #801FC6, 
+    0 0 8px #801FC6, 
+    0 0 12px #801FC6, 
+    0 0 16px #801FC6'
   >
-    {title}
+    RESET A LA <span
+      class='text-white'
+      style=' text-shadow: 
+    0 0 2px #00ff00, 
+    0 0 4px #00ff00, 
+    0 0 8px #00ff00, 
+    0 0 12px #00ff00, 
+    0 0 16px #00ff00'
+      >MATRIX</span
+    >
   </h1>
-  <h2 class={`text-white text-sm lg:text-xl xl:text-2xl m-4`}>
-    Registrate a este <span class='font-bold'>EVENTO ONLINE</span> para aprender
-    a cómo liberarte del sistema antes de que siga limitando tu potencial, elevar
-    tu frecuencia y vivir de tu propósito de vida.
-  </h2>
 </div>
 
 <style>
