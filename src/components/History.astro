@@ -7,11 +7,13 @@ const { history } = clientData;
 <div
   class='flex flex-col sm:flex-row items-center justify-center space-y-4 gap-4'
 >
-  <div class='w-[400px] sm:w-[600px] text-xs sm:text-xl p-4'>
+  <div
+    class='flex flex-col w-[400px] sm:w-[600px] text-xs sm:text-xl md:text-2xl lg:text-3xl p-10'
+  >
     <h1>{history.title}</h1>
     <p>
       {history.text}
     </p>
   </div>
-  <img src={history.image} alt='' class='h-[300px]' />
 </div>
+<img src={history.image} alt='' class='h-[200px]' />

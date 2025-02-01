@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-import clientData from "./src/data/config";
 import animations from "@midudev/tailwind-animations";
+import clientData from "./src/data/config";
 const { colors } = clientData;
 export default {
   content: [
@@ -10,6 +10,9 @@ export default {
   theme: {
     extend: {
       colors: colors,
+      animation: {
+        "spin-clockwise-infinite": "spin-clockwise 1s linear infinite",
+      },
     },
   },
   plugins: [animations, require("flowbite/plugin")],

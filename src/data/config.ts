@@ -39,6 +39,9 @@ const config = {
     accent: "#ff0000", // Para elementos destacados o botones
     highlight: "#F5EBE0", // Para detalles o decoraciones
   },
+  imagesLinks: {
+    luis: "https://i.ibb.co/XxXMmFsb/58361.jpg",
+  },
 };
 
 export default config;

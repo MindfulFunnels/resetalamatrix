@@ -1,6 +1,7 @@
 ---
 import clientData from "../data/config";
 const { title } = clientData;
+import "../styles/global.css"; // Importa el archivo global.css
 ---
 
 <!doctype html>
@@ -10,7 +11,11 @@ const { title } = clientData;
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes'
+    />
+
     <title>{title}</title>
     <script
       is:inline
@@ -18,8 +23,10 @@ const { title } = clientData;
     ></script>
   </head>
   <body class='flex items-center justify-center min-h-screen bg-background'>
-    <div class='w-full px-4 max-w-7xl'>
-      <slot />
+    <div class='w-full'>
+      <div class='container'>
+        <slot />
+      </div>
     </div>
   </body>
 </html>
@@ -30,6 +37,7 @@ const { title } = clientData;
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     margin: 0;
@@ -37,10 +45,15 @@ const { title } = clientData;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100%;
     font-family: "Poppins", sans-serif; /* Asegúrate de incluir la fuente */
     background-color: #000; /* Fondo negro */
     color: #fff;
+  }
+  .container {
+    margin: 0 auto;
+    padding: 0 16px;
+    overflow: hidden;
   }
   h1 {
     font-family: "Audiowide", cursive;

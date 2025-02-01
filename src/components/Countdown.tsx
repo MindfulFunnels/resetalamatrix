@@ -54,7 +54,7 @@ const Countdown = ({ deadline }: { deadline: string }) => {
   }
 
   return (
-    <div className='flex items-center justify-center w-full max-w-[400px] sm:w-[350px] md:w-[400px] gap-6 count-down-main p-6'>
+    <div className='flex items-center justify-center w-full  gap-6 count-down-main'>
       {["days", "hours", "minutes", "seconds"].map((unit, index) => (
         <div key={index} className='timer'>
           <div className="pr-1.5 pl-2 relative bg-primary w-max before:contents-[''] before:absolute before:h-full before:w-0.5 before:top-0 before:left-1/2 before:-translate-x-1/2 before:bg-white before:z-10">
