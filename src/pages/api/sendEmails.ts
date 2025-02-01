@@ -17,7 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const apiKey = process.env.BREVO_API_KEY;
+    const apiKey = import.meta.env.BREVO_API_KEY;
     if (!apiKey) {
       throw new Error("Clave API de Brevo no está definida");
     }
@@ -94,6 +94,9 @@ export const POST: APIRoute = async ({ request }) => {
       },
       body: JSON.stringify(payload),
     });
+
+    console.log("Payload enviado a Brevo:", payload);
+    console.log("Clave API:", apiKey);
 
     if (!response.ok) {
       const error = await response.json();
