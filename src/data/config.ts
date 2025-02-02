@@ -19,7 +19,7 @@ const config = {
     day: 23,
     month: "Febrero",
     year: 2025,
-    hour: "19:00",
+    hour: 19,
   },
   eventDateForCountdown: "2025-02-23T19:00:00", // Year-Month-DayThours:minutes:seconds
   contactEmail: "contacto@cliente.com",

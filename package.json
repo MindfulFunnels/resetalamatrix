@@ -19,8 +19,10 @@
     "astro": "^5.1.9",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.7",
+    "flag-icons": "^7.3.2",
     "flowbite": "^3.0.0",
     "landing-page": "file:",
+    "luxon": "^3.5.0",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,7 +31,8 @@
     "three": "^0.173.0"
   },
   "devDependencies": {
-    "@astrojs/vercel": "^8.0.4"
+    "@astrojs/vercel": "^8.0.4",
+    "@types/luxon": "^3.4.2"
   },
   "overrides": {
     "path-to-regexp": "^6.2.2"

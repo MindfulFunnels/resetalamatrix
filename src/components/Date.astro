@@ -1,75 +1,46 @@
 ---
 import clientData from "../data/config";
 const { day, month, hour, year } = clientData.eventDate;
+
+// Cálculo de los horarios internacionales
+const eventTimes = [
+  { country: "España", flag: "fi fi-es", time: `${hour}:00hs ` }, // España (horario base)
+  { country: "Argentina", flag: "fi fi-ar", time: `${hour - 4}:00hs ` }, // CET - 4 horas
+  { country: "Colombia", flag: "fi fi-co", time: `${hour - 6}:00hs ` }, // CET - 6 horas
+  { country: "México", flag: "fi fi-mx", time: `${hour - 7}:00hs ` }, // CET - 7 horas
+];
 ---
 
 <div class='flex flex-col items-center'>
   <div class='flex flex-wrap justify-center gap-2 text-center'>
     <h2
-      class='text-white text-3xl lg:text-4xl'
+      class='text-3xl text-white lg:text-4xl'
       style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
+    0 0 2px #801FC6, 
+    0 0 4px #801FC6, 
+    0 0 8px #801FC6, 
+    0 0 12px #801FC6, 
+    0 0 16px #801FC6'
     >
       {day}
-    </h2>
-    <h2
-      class='text-white text-3xl lg:text-4xl'
-      style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
-    >
-      /
-    </h2>
-    <h2
-      class='text-white text-3xl lg:text-4xl'
-      style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
-    >
+      de
       {month}
     </h2>
-    <h2
-      class='text-white text-3xl lg:text-4xl'
-      style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
-    >
-      /
-    </h2>
-    <h2
-      class='text-white text-3xl lg:text-4xl'
-      style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
-    >
-      {year}
-    </h2>
-    <h2
-      class='text-white text-3xl lg:text-4xl ml-4'
-      style='text-shadow: 
-        0 0 2px #801FC6, 
-        0 0 4px #801FC6, 
-        0 0 8px #801FC6, 
-        0 0 12px #801FC6, 
-        0 0 16px #801FC6'
-    >
-      {hour}hs
-    </h2>
+
+    <span class='flag-icon flag-icon-es'></span>
+  </div>
+
+  <div class='mt-4'>
+    <ul class='mt-2'>
+      {
+        eventTimes.map((event) => (
+          <li class='flex items-center gap-2 text-2xl white text-'>
+            <span class={event.flag} />
+            <span>{event.country}:</span>
+            <span>{event.time}</span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
