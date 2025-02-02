@@ -49,6 +49,7 @@ export default function RegisterBox() {
         }
         window.location.href = "/thanks";
       } else {
+        window.location.href = "/thanks";
         setErrorMessages("Ese email ya está registrado");
         setIsSubmitting(false); // Ocultar el spinner
       }
@@ -84,7 +85,7 @@ export default function RegisterBox() {
         <div role='status'>
           <svg
             aria-hidden='true'
-            className='inline w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-red-600'
+            className='inline w-10 h-10 text-gray-200 animate-spin-clockwise-infinite dark:text-gray-600 fill-red-600'
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -98,12 +99,11 @@ export default function RegisterBox() {
               fill='currentFill'
             ></path>
           </svg>
-          <span className='sr-only'>Loading...</span>
         </div>
       ) : (
         <button
           type='submit'
-          className='w-full px-10 py-4 text-lg font-bold text-white bg-red-600 rounded-lg hover:bg-red-700 hover:scale-105 transition-transform duration-300'
+          className='w-full px-10 py-4 text-lg font-bold text-white transition-transform duration-300 bg-red-600 rounded-lg hover:bg-red-700 hover:scale-105'
           onClick={handleSubmit}
         >
           Registrarme
