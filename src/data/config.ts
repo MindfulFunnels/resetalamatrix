@@ -17,7 +17,7 @@ const config = {
   },
   eventDate: {
     day: 23,
-    month: "Febrero",
+    month: "FEBRERO",
     year: 2025,
     hour: 19,
   },

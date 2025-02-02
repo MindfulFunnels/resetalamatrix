@@ -28,6 +28,7 @@ const { title, subtitle, eventDateForCountdown } = clientData;
           a cómo liberarte del sistema antes de que siga limitando tu potencial,
           elevar tu frecuencia y vivir de tu propósito de vida.
         </h2>
+        <Date />
         <Countdown deadline={eventDateForCountdown} client:load />
       </div>
       <div
@@ -44,7 +45,6 @@ const { title, subtitle, eventDateForCountdown } = clientData;
           class='flex flex-col items-center justify-center gap-2'
           id='register'
         >
-          <Date />
           <RegisterBox client:only='react' />
         </div>
       </div>
@@ -60,5 +60,3 @@ const { title, subtitle, eventDateForCountdown } = clientData;
     <History />
   </div>
 </Layout>
-
-

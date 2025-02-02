@@ -4,7 +4,9 @@ import { DateTime } from "luxon";
 const Countdown = ({ deadline }: { deadline: string }) => {
   const calculateTimeLeft = () => {
     // Convertir el deadline a la zona horaria local del visitante
+
     const eventTime = DateTime.fromISO(deadline, { zone: "Europe/Madrid" }); // Tiempo base en España
+
     const localTime = eventTime.setZone(
       Intl.DateTimeFormat().resolvedOptions().timeZone
     );
