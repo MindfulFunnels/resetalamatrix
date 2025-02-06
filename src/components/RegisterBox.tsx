@@ -62,7 +62,10 @@ export default function RegisterBox() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email }),
+          body: JSON.stringify({
+            name: capitalizedName,
+            email: email.toLowerCase(),
+          }),
         });
         if (!emailRes.ok) {
           setErrorMessages(

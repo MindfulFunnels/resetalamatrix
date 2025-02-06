@@ -4,8 +4,6 @@ import clientData from "../../data/config";
 
 dotenv.config();
 
-const { title } = clientData;
-
 export const POST: APIRoute = async ({ request }) => {
   try {
     const { name, email } = await request.json();
