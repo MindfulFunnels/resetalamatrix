@@ -96,7 +96,7 @@ export default function RegisterBox() {
           id='name'
           name='name'
           required
-          placeholder='Tu nombre*'
+          placeholder='Tu nombre y apellido*'
           className='w-full p-4 text-lg border border-[#801FC6] rounded-lg bg-[#1B032E] text-white focus:outline-none focus:ring-2 focus:ring-[#A85FE8] focus:ring-offset-2 focus:ring-offset-[#2C0A4A]'
         />
         <input
