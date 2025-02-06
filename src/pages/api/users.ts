@@ -4,8 +4,8 @@ import { addUser } from "../../db/client";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { name, email } = await request.json();
-    await addUser(name, email);
+    const { name, email, phone } = await request.json();
+    await addUser(name, email, phone);
   } catch (error) {
     return new Response("Error: " + error, { status: 400 });
   }

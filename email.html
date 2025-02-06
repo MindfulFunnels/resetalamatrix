@@ -1,56 +1,98 @@
-<html>
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Hola ${name}</title>
-      </head>
-      <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #801FC6; color: white;">
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #000000; max-width: 600px; margin: 0 auto;">
-              <tr>
-                  <td style="padding: 20px; text-align: center; align-items: center; justify-content: center; display: flex;">
-                      <img src="https://luisgarre.com/wp-content/uploads/2021/04/logo-luis-garre-250-.jpg" alt="Imagen" style="display: block; margin: 10px 0; width: 100%; max-width: 300px;">
-                  </td>
-                </tr>
-                <tr>
-                    <td style="padding: 20px; text-align: center;">
-                        <h1 style="color: #801FC6; font-size: 40px; font-family: Audiowide;">RESET A LA MATRIX</h1>
-                        <p>Utilice esta área para presentar sus noticias o últimas mejoras.</p>
-                  </td>
-              </tr>
-              <tr>
-                  <td style="padding: 20px; text-align: left;">
-                      <h2>Bienvenido ${name}</h2>
-                      <p>Utilice esta área para presentar sus noticias o últimas mejoras.</p>
-                      <img src="https://i.ibb.co/XxXMmFsb/58361.jpg" alt="Imagen" style="display: block; margin: 10px 0; width: 100%; max-width: 150px;">
-                  </td>
-              </tr>
-              <tr>
-                  <td style="padding: 20px;">
-                      <h3>Comparta el subtítulo más importante de su historia</h3>
-                      <p>Déle continuidad a su historia compartiendo algunas detalles interesantes y algunas palabras finales con claridad.</p>
-                      <img src="https://i.ibb.co/rWkK9Fg/cover.png" alt="Imagen" style="display: block; margin: 10px 0; width: 100%; max-width: 300px;">
-                  </td>
-              </tr>
-              <tr>
-                  <td style="padding: 20px;">
-                      <h3>Describa a sus lectores cómo proceder para comenzar</h3>
-                      <ol>
-                          <li>Indique el tema o concepto que va a tratar.</li>
-                          <li>Proporcione información relevante con hechos o contexto para ayudar a la audiencia a entender el tema.</li>
-                          <li>Organice sus ideas destacando los puntos principales.</li>
-                          <li>Concluya resumiendo los puntos clave o invitando a la audiencia a una mayor discusión.</li>
-                      </ol>
-                      <button style="background-color: #333; color: white; padding: 10px 20px; border: none; cursor: pointer;">Llamado a la acción</button>
-                  </td>
-              </tr>
-              <tr>
-                  <td style="padding: 20px; background-color: #333; color: white; text-align: center;">
-                      <p>Dirección de la empresa</p>
-                      <p>Email: contacto@empresa.com</p>
-                      <p>Teléfono: +123456789</p>
-                      <p><a href="#" style="color: white; text-decoration: none;">Desuscribirse</a></p>
-                  </td>
-              </tr>
-          </table>
-      </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESET A LA MATRIX</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;                        
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;  
+            border: 1px solid #801FC6;
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header img {
+            max-width: 300px;
+            margin: 0 auto;
+            border: 5px solid #801FC6;
+            border-radius: 10px;
+        }
+        .cta {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .cta a {
+            background-color: #801FC6 !important;
+            color: #000 !important;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .title {
+            font-size: 3rem;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #801FC6 !important;         
+            margin: 20px 0;
+        }
+        .title span {
+            color: #00ff00 !important;           
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+            color: #bbb !important;
+        }
+    </style>
+</head>
+<body style="background-color: transparent color: #000 !important;">
+    <div class="container" style="background-color: transparent !important;">
+        <h1 class="title" style="color: #801FC6 !important;">RESET A LA <span style="color: #00ff00 !important;">MATRIX</span></h1>
+        <div class="content" style="color: #000 !important;">
+            <p style="color: #000 !important;">¡Hola <strong style="color: #801FC6 !important;">${name}</strong>! 👋</p>
+            <p style="color: #000 !important;">Tu despertar ha comenzado. Bienvenido/a a <strong style="color: #801FC6 !important;">RESET A LA MATRIX</strong>, el evento donde descubrirás cómo reprogramar tu mente, liberarte de los sistemas de control y manifestar una realidad alineada con tu verdadero propósito. 🌍✨</p>
+            <p style="color: #000 !important;"><strong style="color: #801FC6 !important;">📅 Fecha del evento:</strong> 23/02/2025<br>
+            <strong style="color: #801FC6 !important;">⏰ Hora:</strong> 🇪🇸 España 19:00hs | 🇦🇷 Argentina 15:00hs | 🇨🇴 Colombia 13:00hs | 🇲🇽 México 12:00hs<br>
+            <strong style="color: #801FC6 !important;">📍 Acceso:</strong> Online (pronto recibirás el enlace)</p>
+            <h3 style="color: #000 !important;">¿Qué te espera en RESET A LA MATRIX?</h3>
+            <ul>
+                <li style="color: #000 !important;">🔥 Descubrir cómo opera la Matrix y las claves para salir de su programación.</li>
+                <li style="color: #000 !important;">🧠 Aprender a reprogramar tu subconsciente para manifestar abundancia y libertad.</li>
+                <li style="color: #000 !important;">⚡ Activar tu energía cuántica para elevar tu frecuencia y tomar el control de tu vida.</li>
+                <li style="color: #000 !important;">🔓 Romper creencias limitantes y expandir tu conciencia con herramientas prácticas.</li>
+            </ul>
+            <p style="color: #000 !important;">Este evento no es solo información, <strong style="color: #801FC6 !important;">es una experiencia transformadora</strong>. 🚀</p>
+            <h3 style="color: #000 !important;">🔔 IMPORTANTE:</h3>
+            <p style="color: #000 !important;">Para que aproveches al máximo esta oportunidad:</p>
+            <ul>
+                <li style="color: #000 !important;">✅ Únete al grupo privado de WhatsApp para recibir contenido exclusivo antes del evento 👉 <a href="https://chat.whatsapp.com/IzDBRVbnLPoE1NTgaCBmEN" style="color: #801FC6 !important;">Únete aquí</a></li>
+                <li style="color: #000 !important;">✅ Añade el evento a tu calendario para no olvidarlo.</li>
+                <li style="color: #000 !important;">✅ Estate atento/a a tu correo y a la comunidad de WhatsApp donde te enviaremos más detalles y materiales antes del evento.</li>
+            </ul>
+            <p style="color: #000 !important;"><strong style="color: #801FC6 !important;">⚠️ Prepárate</strong>, porque lo que viene cambiará tu forma de ver la realidad.</p>
+        </div>
+        <div class="header">
+            <img src="https://i.ibb.co/GQKR5KFr/58361-Copy.jpg" alt="Luis Garre">
+            <div class="cta">
+                <a href="https://chat.whatsapp.com/IzDBRVbnLPoE1NTgaCBmEN"style="color: #fff !important;" >Únete al grupo de WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p style="color: #000 !important;">Nos vemos muy pronto<br>
+            <strong style="color: #801FC6 !important;">Luis Garre</strong></p>
+        </div>
+    </div>
+</body>
 </html>
