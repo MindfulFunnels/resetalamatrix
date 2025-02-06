@@ -13,7 +13,6 @@ import Header from "../components/Header.astro";
 import VideosTestimonies from "../components/Videos-testimonies.astro";
 import TakeAway from "../components/TakeAway.astro";
 import AddressedTo from "../components/AddressedTo.astro";
-import Celular from "../components/celular";
 
 const { title, subtitle, eventDateForCountdown } = clientData;
 ---
@@ -25,9 +24,9 @@ const { title, subtitle, eventDateForCountdown } = clientData;
         <h2
           class='m-4 text-base text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
         >
-          Registrate a este <span class='font-bold'>EVENTO ONLINE</span> para aprender
-          a cómo liberarte del sistema antes de que siga limitando tu potencial,
-          elevar tu frecuencia y vivir de tu propósito de vida.
+          Registrate a este <span class='font-bold'>EVENTO ONLINE</span> paraaprender
+          cómo liberarte del sistema antes de que siga limitando tu potencial, elevar
+          tu frecuencia y vivir de tu propósito de vida.
         </h2>
         <Date />
         <Countdown deadline={eventDateForCountdown} client:load />
