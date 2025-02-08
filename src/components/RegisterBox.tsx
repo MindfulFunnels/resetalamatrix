@@ -110,48 +110,74 @@ export default function RegisterBox() {
         />
 
         <PhoneInput
-          country={"es"}
+          country='es' // País inicial (Argentina)
           value={phone}
           onChange={setPhone}
           inputProps={{
             name: "phone",
             required: true,
           }}
-          // localization={{
-          //   ar: "Argentina",
-          //   mx: "México",
-          //   es: "España",
-          //   us: "Estados Unidos",
-          //   fr: "Francia",
-          //   br: "Brasil",
-          //   de: "Alemania",
-          //   co: "Colombia",
-          //   // Agrega más traducciones según sea necesario
-          // }}
+          localization={{
+            es: "España",
+            ar: "Argentina",
+            mx: "México",
+            us: "Estados Unidos",
+            fr: "Francia",
+            br: "Brasil",
+            de: "Alemania",
+            co: "Colombia",
+            cl: "Chile",
+            pe: "Perú",
+            ve: "Venezuela",
+            // Agrega más países según sea necesario
+          }}
           placeholder='123456789'
-          // onlyCountries={["ar", "us", "mx", "es", "fr", "br", "de", "co"]}
-          disableDropdown={true} // Mantén el dropdown habilitado
-          // disableCountryCode={true} // Bloquea la edición del prefijo
+          enableSearch={true} // Habilitar búsqueda
           containerStyle={{
             width: "100%",
             background: "#1B032E",
             borderRadius: "8px",
             display: "flex",
             alignItems: "center",
+            border: "1px solid #801FC6", // Borde con color consistente
+            transition: "box-shadow 0.3s ease-in-out", // Suavizar el focus
           }}
+          searchPlaceholder='Buscar' // Placeholder del campo de búsqueda
+          countryCodeEditable={false} // No permitir editar el prefijo
           inputStyle={{
             width: "100%",
-            padding: "16px 16px 16px 50px",
+            padding: "16px",
+            paddingLeft: "60px", // Deja espacio para mostrar el prefijo
             fontSize: "18px",
+
             backgroundColor: "#1B032E",
             color: "#fff",
-            border: "1px solid #801FC6",
+            border: "none",
             borderRadius: "8px",
+            outline: "none",
+            boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)", // Sin focus inicialmente
           }}
           buttonStyle={{
             backgroundColor: "#1B032E",
             border: "none",
-            borderRadius: "8px 0 0 8px",
+            borderRight: "1px solid #801FC6", // Separador del dropdown
+            borderRadius: "8px",
+            // padding: "0 10px",
+            width: "50px", // Tamaño suficiente para el prefijo
+            justifyContent: "left",
+          }}
+          dropdownStyle={{
+            // backgroundColor: "#801FC6", // Fondo del dropdown
+            color: "#000", // Texto consistente
+            borderRadius: "8px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Sombra sutil
+          }}
+          searchStyle={{
+            backgroundColor: "#fff", // Fondo del campo de búsqueda
+            color: "#000000", // Texto del campo de búsqueda
+            border: "1px solid #801FC6",
+            borderRadius: "8px",
+            padding: "2px",
           }}
         />
         <p className='text-white text-[10px] pt-[-10px]'>
