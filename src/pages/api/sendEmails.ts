@@ -113,7 +113,7 @@ export const POST: APIRoute = async ({ request }) => {
         <div class="header">
             <img src="https://i.ibb.co/GQKR5KFr/58361-Copy.jpg" alt="Luis Garre">
             <div class="cta">
-                <a href="https://chat.whatsapp.com/IzDBRVbnLPoE1NTgaCBmEN"style="color: #fff !important;" >Únete al grupo de WhatsApp</a>
+                <a href="https://chat.whatsapp.com/Doh9B63sKIx9ao0mCL62VI"style="color: #fff !important;" >Únete al grupo de WhatsApp</a>
             </div>
         </div>
         <div class="footer">
