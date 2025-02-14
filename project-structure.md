@@ -72,3 +72,8 @@ Thank you page:
 
 - Luis Lunes/Martes
 - Lanzmiento fecha 23/02/2025 19:00hs
+
+grupos de discord
+armar el curso en skool
+presentacion de diapositivas para el lanzamiento
+secuencia de mensajes (wpp y mail)
