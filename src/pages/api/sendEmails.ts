@@ -104,7 +104,7 @@ export const POST: APIRoute = async ({ request }) => {
             <h3 style="color: #000 !important;">🔔 IMPORTANTE:</h3>
             <p style="color: #000 !important;">Para que aproveches al máximo esta oportunidad:</p>
             <ul>
-                <li style="color: #000 !important;">✅ Únete al grupo privado de WhatsApp para recibir contenido exclusivo antes del evento 👉 <a href="https://chat.whatsapp.com/IzDBRVbnLPoE1NTgaCBmEN" style="color: #801FC6 !important;">Únete aquí</a></li>
+                <li style="color: #000 !important;">✅ Únete al grupo privado de WhatsApp para recibir contenido exclusivo antes del evento 👉 <a href="https://chat.whatsapp.com/D1RmlHTEUMKEikwXj3ARY3" style="color: #801FC6 !important;">Únete aquí</a></li>
                 <li style="color: #000 !important;">✅ Añade el evento a tu calendario para no olvidarlo.</li>
                 <li style="color: #000 !important;">✅ Estate atento/a a tu correo y a la comunidad de WhatsApp donde te enviaremos más detalles y materiales antes del evento.</li>
             </ul>
