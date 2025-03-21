@@ -33,24 +33,30 @@ const { title, isHome = false } = Astro.props;
       </video>
     </div>
 
-    <!-- Navegación siempre visible -->
-    <div class='relative z-50'>
-      <Navigation />
-    </div>
-    <slot />
-    <div class='relative z-50'>
-      <Footer />
+    <!-- Contenido principal (inicialmente oculto) -->
+    <div id='main-content' class='opacity-0'>
+      <!-- Navegación siempre visible -->
+      <div class='relative z-50'>
+        <Navigation />
+      </div>
+      <slot />
+      <div class='relative z-50'>
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
 
 <script>
   const video = document.querySelector("#video-container video");
-  if (video) {
+  const mainContent = document.getElementById("main-content");
+
+  if (video && mainContent) {
     video.addEventListener("ended", () => {
       const container = document.getElementById("video-container");
       if (container) {
         container.style.display = "none";
+        mainContent.classList.remove("opacity-0");
       }
     });
   }
@@ -65,5 +71,8 @@ const { title, isHome = false } = Astro.props;
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+  #main-content {
+    transition: opacity 0.5s ease-in-out;
   }
 </style>
