@@ -1,0 +1,177 @@
+---
+interface Lesson {
+  title: string;
+  duration: string;
+}
+
+interface Module {
+  title: string;
+  description: string;
+  lessons: Lesson[];
+  totalLessons: number;
+  totalDuration: string;
+}
+
+const modules: Module[] = [
+  {
+    title: "Romper Bloqueos Mentales y Miedos",
+    description:
+      "Descubre cómo superar las barreras mentales que te impiden alcanzar tu máximo potencial.",
+    totalLessons: 6,
+    totalDuration: "10:10:04",
+    lessons: [
+      {
+        title: "Primeros Pasos para una Vida Extraordinaria",
+        duration: "01:13:28",
+      },
+      {
+        title: "Invictus Veniversum",
+        duration: "02:20:54",
+      },
+      {
+        title: "Romper Barreras y Bloqueos Mentales",
+        duration: "01:38:40",
+      },
+      {
+        title: "17 Técnicas para Frenar y Silenciar los Pensamientos Negativos",
+        duration: "02:21:50",
+      },
+      {
+        title: "Máximo Nivel de Conciencia y Paz Interior",
+        duration: "01:01:15",
+      },
+      {
+        title: "Superar el Miedo al Fracaso para Siempre",
+        duration: "00:47:00",
+      },
+    ],
+  },
+  {
+    title: "Reprogramación Mental Avanzada",
+    description:
+      "Técnicas avanzadas de PNL y reprogramación mental para transformar tus patrones limitantes.",
+    totalLessons: 5,
+    totalDuration: "08:45:30",
+    lessons: [
+      {
+        title: "Fundamentos de la Reprogramación Mental",
+        duration: "01:30:00",
+      },
+      {
+        title: "Técnicas de PNL para el Éxito",
+        duration: "02:15:30",
+      },
+      {
+        title: "Transformación de Creencias Limitantes",
+        duration: "01:45:00",
+      },
+      {
+        title: "Anclajes Emocionales Positivos",
+        duration: "01:55:00",
+      },
+      {
+        title: "Integración y Práctica Avanzada",
+        duration: "01:20:00",
+      },
+    ],
+  },
+];
+---
+
+<section>
+  <div class='container mx-auto px-4'>
+    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
+      Contenido del Programa
+    </h2>
+    <div class='max-w-4xl mx-auto space-y-6'>
+      {
+        modules.map((module, index) => (
+          <div class='bg-gray-800/50 rounded-lg overflow-hidden backdrop-blur-sm'>
+            <button
+              id={`module-button-${index}`}
+              class='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors'
+            >
+              <div class='flex-1'>
+                <div class='flex items-center justify-between'>
+                  <h3 class='text-xl font-semibold text-white'>
+                    {module.title}
+                  </h3>
+                  <div class='text-sm text-gray-400 ml-4'>
+                    {module.totalLessons} Módulos • {module.totalDuration}
+                  </div>
+                </div>
+                <p class='text-gray-400 text-sm mt-1'>{module.description}</p>
+              </div>
+              <svg
+                class='w-5 h-5 text-purple-400 ml-4 transition-transform duration-300'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M19 9l-7 7-7-7'
+                />
+              </svg>
+            </button>
+            <div id={`module-content-${index}`} class='hidden'>
+              <div class='px-6 py-4 space-y-4 border-t border-gray-700/50'>
+                {module.lessons.map((lesson) => (
+                  <div class='flex items-center justify-between py-2 hover:bg-gray-700/30 px-4 rounded-lg transition-colors'>
+                    <span class='text-gray-300'>{lesson.title}</span>
+                    <span class='text-gray-400 text-sm font-mono'>
+                      {lesson.duration}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll('[id^="module-button-"]');
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        const content = document.getElementById(`module-content-${index}`);
+        const icon = button.querySelector("svg");
+
+        // Cerrar todos los otros módulos
+        buttons.forEach((otherButton, otherIndex) => {
+          if (otherIndex !== index) {
+            const otherContent = document.getElementById(
+              `module-content-${otherIndex}`
+            );
+            const otherIcon = otherButton.querySelector("svg");
+            otherContent.classList.add("hidden");
+            otherIcon.style.transform = "rotate(0deg)";
+          }
+        });
+
+        // Alternar el módulo actual
+        content.classList.toggle("hidden");
+        icon.style.transform = content.classList.contains("hidden")
+          ? "rotate(0deg)"
+          : "rotate(180deg)";
+      });
+    });
+  });
+</script>
+
+<style>
+  .module-content {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .module-button[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+</style>

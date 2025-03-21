@@ -1,0 +1,88 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FAQItem[] = [
+  {
+    question: "¿Qué es Reset a la Matrix?",
+    answer:
+      "Reset a la Matrix es un programa completo diseñado para ayudarte a reprogramar tu mente y alcanzar tus objetivos. Incluye técnicas avanzadas de neurociencia, meditación y desarrollo personal.",
+  },
+  {
+    question: "¿Cuánto tiempo tengo acceso al contenido?",
+    answer:
+      "Una vez que te inscribas, tendrás acceso de por vida a todo el contenido del programa, incluyendo futuras actualizaciones.",
+  },
+  {
+    question: "¿Necesito experiencia previa?",
+    answer:
+      "No, el programa está diseñado tanto para principiantes como para personas con experiencia en desarrollo personal. Te guiaremos paso a paso.",
+  },
+  {
+    question: "¿Qué tipo de soporte ofrecen?",
+    answer:
+      "Ofrecemos soporte por email y acceso a una comunidad privada donde podrás interactuar con otros miembros y recibir ayuda adicional.",
+  },
+];
+---
+
+<section class='py-16'>
+  <div class='container mx-auto px-4 relative'>
+    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
+      Preguntas Frecuentes
+    </h2>
+    <div class='max-w-3xl mx-auto space-y-6'>
+      {
+        faqItems.map((item, index) => (
+          <div class='bg-gray-800 rounded-xl overflow-hidden'>
+            <button
+              class='w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors'
+              aria-expanded='false'
+              aria-controls={`faq-${index}`}
+            >
+              <span class='font-semibold text-white'>{item.question}</span>
+              <svg
+                class='w-5 h-5 transform transition-transform text-purple-400'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M19 9l-7 7-7-7'
+                />
+              </svg>
+            </button>
+            <div id={`faq-${index}`} class='hidden px-6 py-4'>
+              <p class='text-gray-300'>{item.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("button[aria-expanded]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", (!isExpanded).toString());
+
+      const content = button.nextElementSibling;
+      const icon = button.querySelector("svg");
+
+      if (!isExpanded) {
+        content.classList.remove("hidden");
+        icon.classList.add("rotate-180");
+      } else {
+        content.classList.add("hidden");
+        icon.classList.remove("rotate-180");
+      }
+    });
+  });
+</script>

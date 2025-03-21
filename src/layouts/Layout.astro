@@ -2,6 +2,13 @@
 import "../styles/global.css";
 import Navigation from "@/sections/Navigation.astro";
 import Footer from "@/sections/Footer.astro";
+
+interface Props {
+  title: string;
+  isHome?: boolean;
+}
+
+const { title, isHome = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,16 +17,54 @@ import Footer from "@/sections/Footer.astro";
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <title>Reset a la matix - Luis Garre</title>
+    <title>{title}</title>
   </head>
-  <body class='bg-background min-h-screen w-full'>
-    <Navigation />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+  <body class='bg-gray-900 min-h-screen w-full'>
+    <!-- Video de inicio (solo primera vez) -->
+    {
+      isHome && (
+        <div
+          class='fixed inset-0 z-[100] tv-turn-on hidden'
+          id='tv-on-container'
+        >
+          <video class='w-full h-full object-cover' autoplay muted playsinline>
+            <source src='/videos/tv-turn-on.mp4' type='video/mp4' />
+          </video>
+        </div>
+      )
+    }
+
+    <!-- Navegación siempre visible -->
+    <div class='relative z-50'>
+      <Navigation />
+    </div>
+    <slot />
+    <div class='relative z-50'>
+      <Footer />
+    </div>
   </body>
 </html>
+
+<script>
+  // Verificar si es la primera visita
+  const hasSeenVideo = localStorage.getItem("hasSeenVideo");
+  const tvContainer = document.getElementById("tv-on-container");
+
+  if (!hasSeenVideo && tvContainer) {
+    tvContainer.classList.remove("hidden");
+
+    // Marcar que ya se ha visto el video
+    localStorage.setItem("hasSeenVideo", "true");
+
+    // Ocultar el video después de que termine
+    const video = tvContainer.querySelector("video");
+    if (video) {
+      video.addEventListener("ended", () => {
+        tvContainer.classList.add("hidden");
+      });
+    }
+  }
+</script>
 
 <style>
   :root {
@@ -31,7 +76,16 @@ import Footer from "@/sections/Footer.astro";
     width: 100%;
     height: 100%;
   }
-  main {
-    min-height: 100vh;
+  .tv-turn-on {
+    animation: fadeOut 1s ease-out 2s forwards;
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 </style>

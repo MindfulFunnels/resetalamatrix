@@ -1,0 +1,85 @@
+---
+interface PricingTier {
+  name: string;
+  price: string;
+  features: string[];
+  isPopular?: boolean;
+}
+
+const pricingTiers: PricingTier[] = [
+  {
+    name: "Básico",
+    price: "47€",
+    features: [
+      "Acceso a todos los módulos",
+      "Soporte por email",
+      "Acceso de por vida",
+      "Actualizaciones gratuitas",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "97€",
+    features: [
+      "Todo lo del plan básico",
+      "Sesiones de coaching grupales",
+      "Acceso a comunidad privada",
+      "Recursos exclusivos",
+    ],
+    isPopular: true,
+  },
+];
+---
+
+<section>
+  <div class='container mx-auto px-4 relative'>
+    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
+      Planes de Membresía
+    </h2>
+    <div class='grid md:grid-cols-2 gap-8 max-w-4xl mx-auto'>
+      {
+        pricingTiers.map((tier) => (
+          <div
+            class={`rounded-xl p-8 shadow-lg transition-all duration-300 ${
+              tier.isPopular
+                ? "bg-gradient-to-b from-purple-600 to-purple-800 text-white border-2 border-purple-400"
+                : "bg-gray-800 text-white hover:bg-gray-700"
+            }`}
+          >
+            <h3 class='text-2xl font-bold mb-4'>{tier.name}</h3>
+            <div class='text-4xl font-bold mb-6'>{tier.price}</div>
+            <ul class='space-y-4 mb-8'>
+              {tier.features.map((feature) => (
+                <li class='flex items-center'>
+                  <svg
+                    class='w-5 h-5 mr-2 text-purple-400'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M5 13l4 4L19 7'
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <button
+              class={`w-full py-3 px-6 rounded-lg font-semibold transition-all ${
+                tier.isPopular
+                  ? "bg-white text-purple-600 hover:bg-gray-100"
+                  : "bg-purple-600 text-white hover:bg-purple-700"
+              }`}
+            >
+              Comenzar Ahora
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

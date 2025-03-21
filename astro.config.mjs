@@ -13,4 +13,7 @@ export default defineConfig({
       mode: "sprite",
     },
   },
+  server: {
+    host: true, // Habilita el acceso desde la red local
+  },
 });

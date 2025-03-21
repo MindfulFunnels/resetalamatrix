@@ -1,21 +1,44 @@
 ---
 import Iframe from "@/components/Iframe.astro";
+import Title from "@/components/Title.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout title='Reset a la Matrix' isHome={true}>
+  <!-- Video de fondo estático -->
+  <div class='fixed inset-0 z-0 pointer-events-none'>
+    <video
+      class='w-full h-full object-cover opacity-10 brightness-50'
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+      <source src='/videos/tv-static.mp4' type='video/mp4' />
+    </video>
+    <div
+      class='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.05),transparent_70%)]'
+    >
+    </div>
+  </div>
+
   <main
-    class='flex flex-col items-center justify-center pt-20 max-w-7xl mx-auto text-secondary gap-6 text-center'
+    class='min-h-screen flex flex-col items-center justify-center px-4 py-20 max-w-7xl mx-auto relative z-10 gap-20'
   >
-    <h1 class='text-primary text-5xl lg:text-7xl font-bold'>
-      Reset a la matrix
-    </h1>
-    <Iframe />
-    <p class='text-center text-lg'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime enim culpa
-      animi perspiciatis, accusantium quidem. Quibusdam rerum nesciunt, iste,
-      accusantium repellendus molestias in doloribus, consequuntur non
-      reprehenderit laboriosam optio impedit?
-    </p>
+    <Title />
+    <div class='relative z-10 text-center space-y-12 w-full'>
+      <div class='w-full max-w-5xl mx-auto'>
+        <Iframe />
+      </div>
+      <button
+        class='group relative px-8 py-4 text-xl bg-transparent text-purple-400 border-2 border-purple-400 rounded-lg font-bold cursor-pointer overflow-hidden transition-all duration-300 hover:bg-purple-400 hover:text-gray-900'
+      >
+        <span class='relative z-10'>Conocer más</span>
+        <div
+          class='absolute inset-0 bg-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left'
+        >
+        </div>
+      </button>
+    </div>
   </main>
 </Layout>
