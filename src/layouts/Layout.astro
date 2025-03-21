@@ -20,21 +20,25 @@ const { title, isHome = false } = Astro.props;
     <title>{title}</title>
   </head>
   <body class='bg-gray-900 min-h-screen w-full'>
-    <!-- Video de inicio -->
-    <div class='fixed inset-0 z-[100]' id='video-container'>
-      <video
-        class='w-full h-full object-cover'
-        autoplay
-        muted
-        playsinline
-        preload='auto'
-      >
-        <source src='/videos/tv-on.mp4' type='video/mp4' />
-      </video>
-    </div>
+    <!-- Video de inicio (solo en home) -->
+    {
+      isHome && (
+        <div class='fixed inset-0 z-[100]' id='video-container'>
+          <video
+            class='w-full h-full object-cover'
+            autoplay
+            muted
+            playsinline
+            preload='auto'
+          >
+            <source src='/videos/tv-on.mp4' type='video/mp4' />
+          </video>
+        </div>
+      )
+    }
 
-    <!-- Contenido principal (inicialmente oculto) -->
-    <div id='main-content' class='opacity-0'>
+    <!-- Contenido principal (inicialmente oculto solo en home) -->
+    <div id='main-content' class={isHome ? "opacity-0" : ""}>
       <!-- Navegación siempre visible -->
       <div class='relative z-50'>
         <Navigation />
@@ -50,15 +54,27 @@ const { title, isHome = false } = Astro.props;
 <script>
   const video = document.querySelector("#video-container video");
   const mainContent = document.getElementById("main-content");
+  const hasSeenVideo = sessionStorage.getItem("hasSeenVideo");
 
-  if (video && mainContent) {
+  if (video && mainContent && !hasSeenVideo) {
     video.addEventListener("ended", () => {
       const container = document.getElementById("video-container");
       if (container) {
         container.style.display = "none";
         mainContent.classList.remove("opacity-0");
+        // Marcar que ya se vio el video
+        sessionStorage.setItem("hasSeenVideo", "true");
       }
     });
+  } else if (mainContent) {
+    // Si ya se vio el video o no es home, mostrar el contenido inmediatamente
+    mainContent.classList.remove("opacity-0");
+    if (video) {
+      const container = document.getElementById("video-container");
+      if (container) {
+        container.style.display = "none";
+      }
+    }
   }
 </script>
 
