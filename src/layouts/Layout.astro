@@ -26,6 +26,7 @@ const { title, isHome = false } = Astro.props;
             as='video'
             href='/videos/tv-turn-on.mp4'
             type='video/mp4'
+            fetchpriority='high'
           />
           <link rel='prefetch' href='/videos/tv-turn-on.mp4' />
         </>
@@ -36,31 +37,34 @@ const { title, isHome = false } = Astro.props;
     <!-- Video de inicio (solo primera vez) -->
     {
       isHome && (
-        <div
-          class='fixed inset-0 z-[100] tv-turn-on hidden'
-          id='tv-on-container'
-        >
+        <div class='fixed inset-0 z-[100]' id='tv-on-container'>
+          <div class='absolute inset-0 bg-gray-900' />
           <video
             class='w-full h-full object-cover'
             autoplay
             muted
             playsinline
             preload='auto'
-            fetchpriority='high'
-          >
-            <source src='/videos/tv-turn-on.mp4' type='video/mp4' />
-          </video>
+            controls
+            src='/videos/tv-turn-on.mp4'
+          />
+          <div class='absolute bottom-4 left-4 text-white bg-black/50 px-4 py-2 rounded'>
+            Estado del video: <span id='video-status'>Cargando...</span>
+          </div>
         </div>
       )
     }
 
-    <!-- Navegación siempre visible -->
-    <div class='relative z-50'>
-      <Navigation />
-    </div>
-    <slot />
-    <div class='relative z-50'>
-      <Footer />
+    <!-- Contenido principal (inicialmente oculto) -->
+    <div id='main-content' class={isHome ? "opacity-0" : ""}>
+      <!-- Navegación siempre visible -->
+      <div class='relative z-50'>
+        <Navigation />
+      </div>
+      <slot />
+      <div class='relative z-50'>
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
@@ -69,9 +73,19 @@ const { title, isHome = false } = Astro.props;
   // Verificar si es la primera visita
   const hasSeenVideo = localStorage.getItem("hasSeenVideo");
   const tvContainer = document.getElementById("tv-on-container");
+  const mainContent = document.getElementById("main-content");
+  const videoStatus = document.getElementById("video-status");
 
-  if (!hasSeenVideo && tvContainer) {
-    tvContainer.classList.remove("hidden");
+  function updateVideoStatus(status) {
+    if (videoStatus) {
+      videoStatus.textContent = status;
+    }
+    console.log("Estado del video:", status);
+  }
+
+  if (!hasSeenVideo && tvContainer && mainContent) {
+    console.log("Primera visita - Mostrando video");
+    mainContent.classList.add("opacity-0");
 
     // Marcar que ya se ha visto el video
     localStorage.setItem("hasSeenVideo", "true");
@@ -79,9 +93,50 @@ const { title, isHome = false } = Astro.props;
     // Ocultar el video después de que termine
     const video = tvContainer.querySelector("video");
     if (video) {
-      video.addEventListener("ended", () => {
-        tvContainer.classList.add("hidden");
+      console.log("Video encontrado, configurando eventos");
+      updateVideoStatus("Configurando video...");
+
+      video.addEventListener("loadstart", () => {
+        updateVideoStatus("Iniciando carga...");
       });
+
+      video.addEventListener("loadeddata", () => {
+        updateVideoStatus("Video cargado");
+        video
+          .play()
+          .then(() => {
+            updateVideoStatus("Reproduciendo");
+            console.log("Video reproduciéndose");
+          })
+          .catch((error) => {
+            updateVideoStatus("Error al reproducir");
+            console.error("Error al reproducir el video:", error);
+          });
+      });
+
+      video.addEventListener("playing", () => {
+        updateVideoStatus("Reproduciendo");
+      });
+
+      video.addEventListener("ended", () => {
+        updateVideoStatus("Terminado");
+        console.log("Video terminado");
+        tvContainer.style.display = "none";
+        mainContent.classList.remove("opacity-0");
+      });
+
+      video.addEventListener("error", (e) => {
+        updateVideoStatus("Error al cargar");
+        console.error("Error al cargar el video:", e);
+        tvContainer.style.display = "none";
+        mainContent.classList.remove("opacity-0");
+      });
+    }
+  } else if (mainContent) {
+    console.log("No es primera visita o no hay contenedor de video");
+    mainContent.classList.remove("opacity-0");
+    if (tvContainer) {
+      tvContainer.style.display = "none";
     }
   }
 </script>
@@ -107,5 +162,12 @@ const { title, isHome = false } = Astro.props;
       opacity: 0;
       visibility: hidden;
     }
+  }
+  #main-content {
+    transition: opacity 0.5s ease-in-out;
+  }
+  #tv-on-container {
+    opacity: 1;
+    visibility: visible;
   }
 </style>
