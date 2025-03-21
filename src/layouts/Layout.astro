@@ -18,28 +18,10 @@ const { title, isHome = false } = Astro.props;
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <title>{title}</title>
-    <!-- Precargar el video -->
-    <link
-      rel='preload'
-      as='video'
-      href='/videos/tv-on.mp4'
-      type='video/mp4'
-      fetchpriority='high'
-    />
   </head>
   <body class='bg-gray-900 min-h-screen w-full'>
-    <!-- Overlay de carga -->
-    <div
-      id='loading-overlay'
-      class='fixed inset-0 z-[100] bg-gray-900 flex items-center justify-center'
-    >
-      <!-- Fallback mientras carga el video -->
-      <div
-        id='loading-fallback'
-        class='absolute inset-0 flex items-center justify-center'
-      >
-        <div class='text-white text-xl'>Cargando...</div>
-      </div>
+    <!-- Video de inicio -->
+    <div class='fixed inset-0 z-[100]' id='video-container'>
       <video
         class='w-full h-full object-cover'
         autoplay
@@ -63,62 +45,15 @@ const { title, isHome = false } = Astro.props;
 </html>
 
 <script>
-  // Esperar a que todo se cargue
-  window.addEventListener("load", () => {
-    const video = document.querySelector("#loading-overlay video");
-    const fallback = document.getElementById("loading-fallback");
-
-    if (video && fallback) {
-      // Ocultar fallback cuando el video esté listo
-      video.addEventListener("loadeddata", () => {
-        fallback.style.display = "none";
-      });
-
-      // Manejar errores del video
-      video.addEventListener("error", () => {
-        console.error("Error al cargar el video");
-        // Si hay error, esperar 2 segundos y ocultar el overlay
-        setTimeout(() => {
-          const overlay = document.getElementById("loading-overlay");
-          if (overlay) {
-            overlay.style.opacity = "0";
-            overlay.style.transition = "opacity 0.5s ease-out";
-            setTimeout(() => {
-              overlay.style.display = "none";
-            }, 500);
-          }
-        }, 2000);
-      });
-
-      // Manejar cuando el video termine
-      video.addEventListener("ended", () => {
-        const overlay = document.getElementById("loading-overlay");
-        if (overlay) {
-          overlay.style.opacity = "0";
-          overlay.style.transition = "opacity 0.5s ease-out";
-          setTimeout(() => {
-            overlay.style.display = "none";
-          }, 500);
-        }
-      });
-
-      // Timeout de seguridad por si el video tarda demasiado
-      setTimeout(() => {
-        const videoElement = video as HTMLVideoElement;
-        if (videoElement.readyState < 3) {
-          // Si el video aún no está listo
-          const overlay = document.getElementById("loading-overlay");
-          if (overlay) {
-            overlay.style.opacity = "0";
-            overlay.style.transition = "opacity 0.5s ease-out";
-            setTimeout(() => {
-              overlay.style.display = "none";
-            }, 500);
-          }
-        }
-      }, 5000); // 5 segundos de timeout
-    }
-  });
+  const video = document.querySelector("#video-container video");
+  if (video) {
+    video.addEventListener("ended", () => {
+      const container = document.getElementById("video-container");
+      if (container) {
+        container.style.display = "none";
+      }
+    });
+  }
 </script>
 
 <style>
@@ -130,11 +65,5 @@ const { title, isHome = false } = Astro.props;
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-  #loading-overlay {
-    transition: opacity 0.5s ease-out;
-  }
-  #loading-fallback {
-    background-color: rgba(17, 24, 39, 0.9);
   }
 </style>
