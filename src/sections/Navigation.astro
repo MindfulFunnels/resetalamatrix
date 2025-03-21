@@ -1,0 +1,68 @@
+---
+import HamburgerButton from "@/components/HamburgerButton.astro";
+import Logo from "@/assets/svg/logo.svg";
+const navItems = [
+  { href: "/", label: "Inicio" },
+  { href: "/about", label: "Sobre Nosotros" },
+  { href: "/services", label: "Servicios" },
+  { href: "/contact", label: "Contacto" },
+];
+---
+
+<header
+  class='fixed top-0 left-0 right-0 bg-transparent backdrop-blur-md shadow-sm z-50 text-secondary'
+>
+  <nav class='container mx-auto px-4 py-4'>
+    <div class='flex items-center justify-between'>
+      <a href='/' class='text-2xl font-bold'>
+        <Logo class='w-auto h-10' />
+      </a>
+
+      <div class='hidden md:flex space-x-8'>
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class=' hover:text-primary transition-colors duration-200'
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+      <HamburgerButton />
+    </div>
+
+    <!-- Mobile menu -->
+    <div class='hidden md:hidden' id='mobile-menu'>
+      <div class='px-2 pt-2 pb-3 space-y-1'>
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class='block px-3 py-2  hover:text-primary transition-colors duration-200'
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+</script>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>

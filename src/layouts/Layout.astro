@@ -1,22 +1,37 @@
+---
+import "../styles/global.css";
+import Navigation from "@/sections/Navigation.astro";
+import Footer from "@/sections/Footer.astro";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <title>Reset a la matix - Luis Garre</title>
+  </head>
+  <body class='bg-background min-h-screen w-full'>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  :root {
+    scroll-behavior: smooth;
+  }
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  main {
+    min-height: 100vh;
+  }
 </style>
