@@ -7,100 +7,86 @@ interface Lesson {
 interface Module {
   title: string;
   description: string;
-  lessons: Lesson[];
-  totalLessons: number;
-  totalDuration: string;
 }
 
 const modules: Module[] = [
   {
-    title: "Romper Bloqueos Mentales y Miedos",
+    title: "EMPIEZA POR AQUÍ",
     description:
-      "Descubre cómo superar las barreras mentales que te impiden alcanzar tu máximo potencial.",
-    totalLessons: 6,
-    totalDuration: "10:10:04",
-    lessons: [
-      {
-        title: "Primeros Pasos para una Vida Extraordinaria",
-        duration: "01:13:28",
-      },
-      {
-        title: "Invictus Veniversum",
-        duration: "02:20:54",
-      },
-      {
-        title: "Romper Barreras y Bloqueos Mentales",
-        duration: "01:38:40",
-      },
-      {
-        title: "17 Técnicas para Frenar y Silenciar los Pensamientos Negativos",
-        duration: "02:21:50",
-      },
-      {
-        title: "Máximo Nivel de Conciencia y Paz Interior",
-        duration: "01:01:15",
-      },
-      {
-        title: "Superar el Miedo al Fracaso para Siempre",
-        duration: "00:47:00",
-      },
-    ],
+      "Guía rápida sobre el programa y cómo empezar a trabajar en él.",
   },
   {
-    title: "Reprogramación Mental Avanzada",
+    title: "MENTALIDAD CORRECTA",
     description:
-      "Técnicas avanzadas de PNL y reprogramación mental para transformar tus patrones limitantes.",
-    totalLessons: 5,
-    totalDuration: "08:45:30",
-    lessons: [
-      {
-        title: "Fundamentos de la Reprogramación Mental",
-        duration: "01:30:00",
-      },
-      {
-        title: "Técnicas de PNL para el Éxito",
-        duration: "02:15:30",
-      },
-      {
-        title: "Transformación de Creencias Limitantes",
-        duration: "01:45:00",
-      },
-      {
-        title: "Anclajes Emocionales Positivos",
-        duration: "01:55:00",
-      },
-      {
-        title: "Integración y Práctica Avanzada",
-        duration: "01:20:00",
-      },
-    ],
+      "Construir una mente alineada con tu esencia y tu propósito, dejando atrás creencias limitantes impuestas por el sistema.",
+  },
+  {
+    title: "CONOCE AL ENEMIGO Y AL ESCENARIO",
+    description:
+      "Desvelar cómo opera la matrix en lo invisible y lo visible. Porque solo se puede trascender lo que se comprende.",
+  },
+  {
+    title: "DESCUBRE LAS TRAMPAS DEL SISTEMA",
+    description:
+      "Identificar las jaulas invisibles que te mantienen dormido: el consumismo sin sentido, la manipulación de la industria farmacéutica, el control de masas a través de los medios, los intereses ocultos de la política y la programación mental que te aleja de tu verdadero poder.",
+  },
+  {
+    title: "DESPARASITACIÓN MULTIDIMENSIONAL",
+    description:
+      "Liberarte de cargas energéticas, físicas, emocionales y espirituales, patrones heredados y manipulaciones sutiles que bloquean tu evolución.",
+  },
+  {
+    title: "HACKEAR EL SISTEMA DESDE EL IKIGAI",
+    description:
+      "Descubrir tu propósito de vida y comenzar a vivir desde ahí, creando una realidad más libre, próspera y alineada con tu verdadero ser. Accede a herramientas prácticas para recuperar tu poder, tomar el control de tu vida y actuar desde la conciencia.",
+  },
+  {
+    title: "MASTERCLASS EXCLUSIVAS",
+    description: "Disfruta de las masterclass grabadas.",
+  },
+];
+
+const bonusModules: Module[] = [
+  {
+    title: "🎁Bonus #1 - CURSO COMPLETO: HACKEANDO EL SISTEMA DE CONTROL",
+    description:
+      "En este bonus exclusivo vas a descubrir cómo funciona el entramado oculto que mantiene a la humanidad sometida: educación, medios, política, tecnología y más. Aprendé a detectar los mecanismos de control y, sobre todo, a neutralizarlos desde tu conciencia.",
+  },
+  {
+    title: "🎁 Bonus #2 - CURSO COMPLETO: HACKEANDO EMOCIONES NEGATIVAS",
+    description:
+      "Las emociones son puertas de acceso a tu verdadero poder... o a tu prisión interior. En este curso vas a aprender a identificar, comprender y transformar emociones como el miedo, la ira o la culpa en energía creativa, expansión y libertad interior.",
+  },
+  {
+    title: "🔴 FORMACIONES EN DIRECTO - SE AGREGARÁN SEMANA A SEMANA",
+    description: "Aquí encontrarás todas las sesiones de mentoría en vivo.",
   },
 ];
 ---
 
-<section>
+<section class='py-8'>
   <div class='container mx-auto px-4'>
-    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
+    <h2 class='text-5xl font-bold text-center mb-4 text-white'>
       Contenido del Programa
     </h2>
-    <div class='max-w-4xl mx-auto space-y-6'>
+    <p class='text-xl text-gray-300 text-center mb-16 max-w-2xl mx-auto'>
+      Explora los módulos que componen nuestro programa de transformación
+      personal
+    </p>
+    <div class='max-w-7xl mx-auto space-y-4'>
       {
         modules.map((module, index) => (
-          <div class='bg-gray-800/50 rounded-lg overflow-hidden backdrop-blur-sm'>
+          <div class='bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden h-full border border-purple-500/10 hover:border-purple-500/30 transition duration-300'>
             <button
               id={`module-button-${index}`}
               class='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors'
             >
               <div class='flex-1'>
                 <div class='flex items-center justify-between'>
-                  <h3 class='text-xl font-semibold text-white'>
+                  <h3 class='text-2xl font-semibold text-white'>
                     {module.title}
                   </h3>
-                  <div class='text-sm text-gray-400 ml-4'>
-                    {module.totalLessons} Módulos • {module.totalDuration}
-                  </div>
                 </div>
-                <p class='text-gray-400 text-sm mt-1'>{module.description}</p>
               </div>
               <svg
                 class='w-5 h-5 text-purple-400 ml-4 transition-transform duration-300'
@@ -118,14 +104,9 @@ const modules: Module[] = [
             </button>
             <div id={`module-content-${index}`} class='hidden'>
               <div class='px-6 py-4 space-y-4 border-t border-gray-700/50'>
-                {module.lessons.map((lesson) => (
-                  <div class='flex items-center justify-between py-2 hover:bg-gray-700/30 px-4 rounded-lg transition-colors'>
-                    <span class='text-gray-300'>{lesson.title}</span>
-                    <span class='text-gray-400 text-sm font-mono'>
-                      {lesson.duration}
-                    </span>
-                  </div>
-                ))}
+                <div class='flex items-center justify-between py-2 hover:bg-gray-700/30 px-4 rounded-lg transition-colors'>
+                  {module.description}
+                </div>
               </div>
             </div>
           </div>
@@ -133,45 +114,123 @@ const modules: Module[] = [
       }
     </div>
   </div>
-</section>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll('[id^="module-button-"]');
+  <section class='py-16'>
+    <div class='container mx-auto px-4'>
+      <h2 class='text-5xl font-bold text-center mb-4 text-white'>
+        🎁 Contenido Bonus 🎁
+      </h2>
+      <div class='max-w-7xl mx-auto space-y-4'>
+        {
+          bonusModules.map((module, index) => (
+            <div class='bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden h-full border border-purple-500/10 hover:border-purple-500/30 transition duration-300'>
+              <button
+                id={`bonus-module-button-${index}`}
+                class='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-700/50 transition-colors'
+              >
+                <div class='flex-1'>
+                  <div class='flex items-center justify-between'>
+                    <h3 class='text-2xl font-semibold text-white'>
+                      {module.title}
+                    </h3>
+                  </div>
+                </div>
+                <svg
+                  class='w-5 h-5 text-purple-400 ml-4 transition-transform duration-300'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M19 9l-7 7-7-7'
+                  />
+                </svg>
+              </button>
+              <div id={`bonus-module-content-${index}`} class='hidden'>
+                <div class='px-6 py-4 space-y-4 border-t border-gray-700/50'>
+                  <div class='flex items-center justify-between py-2 hover:bg-gray-700/30 px-4 rounded-lg transition-colors'>
+                    {module.description}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-    buttons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        const content = document.getElementById(`module-content-${index}`);
-        const icon = button.querySelector("svg");
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll('[id^="module-button-"]');
+      const bonusButtons = document.querySelectorAll(
+        '[id^="bonus-module-button-"]'
+      );
 
-        // Cerrar todos los otros módulos
-        buttons.forEach((otherButton, otherIndex) => {
-          if (otherIndex !== index) {
-            const otherContent = document.getElementById(
-              `module-content-${otherIndex}`
-            );
-            const otherIcon = otherButton.querySelector("svg");
-            otherContent.classList.add("hidden");
-            otherIcon.style.transform = "rotate(0deg)";
-          }
+      buttons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          const content = document.getElementById(`module-content-${index}`);
+          const icon = button.querySelector("svg");
+
+          // Cerrar todos los otros módulos
+          buttons.forEach((otherButton, otherIndex) => {
+            if (otherIndex !== index) {
+              const otherContent = document.getElementById(
+                `module-content-${otherIndex}`
+              );
+              const otherIcon = otherButton.querySelector("svg");
+              otherContent.classList.add("hidden");
+              otherIcon.style.transform = "rotate(0deg)";
+            }
+          });
+
+          // Alternar el módulo actual
+          content.classList.toggle("hidden");
+          icon.style.transform = content.classList.contains("hidden")
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
         });
+      });
 
-        // Alternar el módulo actual
-        content.classList.toggle("hidden");
-        icon.style.transform = content.classList.contains("hidden")
-          ? "rotate(0deg)"
-          : "rotate(180deg)";
+      bonusButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          const content = document.getElementById(
+            `bonus-module-content-${index}`
+          );
+          const icon = button.querySelector("svg");
+
+          // Cerrar todos los otros módulos bonus
+          bonusButtons.forEach((otherButton, otherIndex) => {
+            if (otherIndex !== index) {
+              const otherContent = document.getElementById(
+                `bonus-module-content-${otherIndex}`
+              );
+              const otherIcon = otherButton.querySelector("svg");
+              otherContent.classList.add("hidden");
+              otherIcon.style.transform = "rotate(0deg)";
+            }
+          });
+
+          // Alternar el módulo actual
+          content.classList.toggle("hidden");
+          icon.style.transform = content.classList.contains("hidden")
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
+        });
       });
     });
-  });
-</script>
+  </script>
 
-<style>
-  .module-content {
-    transition: all 0.3s ease-in-out;
-  }
+  <style>
+    .module-content {
+      transition: all 0.3s ease-in-out;
+    }
 
-  .module-button[aria-expanded="true"] svg {
-    transform: rotate(180deg);
-  }
-</style>
+    .module-button[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+  </style>
+</section>

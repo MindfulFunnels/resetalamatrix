@@ -13,7 +13,7 @@ const faqItems: FAQItem[] = [
   {
     question: "¿Cuánto tiempo tengo acceso al contenido?",
     answer:
-      "Una vez que te inscribas, tendrás acceso de por vida a todo el contenido del programa, incluyendo futuras actualizaciones.",
+      "La membresía es mensual, trimestral o semestral. Elige el plan que mejor se adapte a tus necesidades, podras disfrutar de todo el contenido de forma durante el tiempo que tengas contratado el plan.",
   },
   {
     question: "¿Necesito experiencia previa?",
@@ -25,24 +25,41 @@ const faqItems: FAQItem[] = [
     answer:
       "Ofrecemos soporte por email y acceso a una comunidad privada donde podrás interactuar con otros miembros y recibir ayuda adicional.",
   },
+  {
+    question: "¿Cómo me registro en la membresía?",
+    answer: "Te dejamos un video en el que te explicamos como hacerlo.",
+  },
+  {
+    question: "¿Qué métodos de pago se aceptan?",
+    answer: "Aceptamos cualquier tarjeta de crédito o débito.",
+  },
+  {
+    question: "¿Puedo cancelar mi membresía en cualquier momento?",
+    answer: "Si, puedes cancelar tu membresía en cualquier momento.",
+  },
 ];
 ---
 
-<section class='py-16'>
+<section class='py-8'>
   <div class='container mx-auto px-4 relative'>
-    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
+    <h2 class='text-5xl font-bold text-center mb-4 text-white'>
       Preguntas Frecuentes
     </h2>
-    <div class='max-w-3xl mx-auto space-y-6'>
+    <p class='text-xl text-gray-300 text-center mb-16 max-w-2xl mx-auto'>
+      Resolvemos tus dudas más comunes sobre el programa
+    </p>
+    <div class='max-w-7xl mx-auto space-y-4'>
       {
         faqItems.map((item, index) => (
-          <div class='bg-gray-800 rounded-xl overflow-hidden'>
+          <div class='bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden h-full border border-purple-500/10 hover:border-purple-500/30 transition duration-300'>
             <button
-              class='w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700 transition-colors'
+              class='w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700/50 transition-colors'
               aria-expanded='false'
               aria-controls={`faq-${index}`}
             >
-              <span class='font-semibold text-white'>{item.question}</span>
+              <span class='font-semibold text-white text-lg'>
+                {item.question}
+              </span>
               <svg
                 class='w-5 h-5 transform transition-transform text-purple-400'
                 fill='none'

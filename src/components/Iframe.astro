@@ -9,10 +9,30 @@
 
     <!-- Video -->
     <iframe
-      src='https://player.vimeo.com/video/1067408869'
+      id='vimeo-player'
+      src='https://player.vimeo.com/video/1067408869?autoplay=1&muted=1&api=1'
       frameborder='0'
       allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media'
       class='absolute inset-0 w-full h-full rounded-xl'
-      title='VIDEO MEMBRESÍA'></iframe>
+      title='Toda la información aquí'></iframe>
   </div>
 </div>
+
+<script>
+  // Esperar a que el DOM esté cargado
+  document.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.getElementById("vimeo-player");
+
+    // Crear el reproductor de Vimeo
+    const player = new Vimeo.Player(iframe);
+
+    // Escuchar el evento de finalización
+    player.on("ended", function () {
+      console.log("Video terminado, redirigiendo...");
+      window.location.href = "/membresia";
+    });
+  });
+</script>
+
+<!-- Cargar la API de Vimeo -->
+<script src='https://player.vimeo.com/api/player.js'></script>

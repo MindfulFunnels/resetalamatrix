@@ -5,21 +5,17 @@ import PricingSection from "@/components/PricingSection.astro";
 import FAQSection from "@/components/FAQSection.astro";
 import TestimonialsSection from "@/components/TestimonialsSection.astro";
 import ModulesSection from "@/components/ModulesSection.astro";
+import TutorialSection from "@/components/TutorialSection.astro";
+import Title from "@/components/Title.astro";
 ---
 
 <Layout title='Reset a la Matrix - Membresía' isHome={false}>
-  <main class='min-h-screen w-full flex flex-col gap-20 text-white'>
+  <main class='min-h-screen w-full flex flex-col gap-6 text-white'>
     <!-- Hero Section -->
-    <section class='mt-20 text-white'>
+    <section class='text-white'>
       <div class='container mx-auto px-4'>
-        <div class='max-w-3xl mx-auto text-center'>
-          <h1
-            class='text-5xl font-bold mb-6 bg-gradient-to-r from-purple-500 via-violet-500 to-fuchsia-500 text-transparent bg-clip-text animate-gradient-x hover:scale-105 transition-transform duration-300'
-            style='text-shadow: 0 0 30px rgba(168,85,247,0.4)'
-          >
-            Despierta tu Potencial
-          </h1>
-          <p class='text-xl mb-8 text-gray-300'>
+        <div class='max-w-7xl mx-auto text-center'>
+          <p class='text-2xl mb-8 text-gray-300 font-light'>
             Descubre el poder de la reprogramación mental y alcanza tus
             objetivos más ambiciosos.
           </p>
@@ -27,14 +23,17 @@ import ModulesSection from "@/components/ModulesSection.astro";
       </div>
     </section>
 
-    <!-- Modules Section -->
-    <ModulesSection />
-
     <!-- Features Section -->
     <FeaturesSection />
 
+    <!-- Modules Section -->
+    <ModulesSection />
+
     <!-- Pricing Section -->
     <PricingSection />
+
+    <!-- Tutorial Section -->
+    <TutorialSection />
 
     <!-- Testimonials Section -->
     <TestimonialsSection />

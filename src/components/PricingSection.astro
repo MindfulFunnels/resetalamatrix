@@ -2,81 +2,101 @@
 interface PricingTier {
   name: string;
   price: string;
-  features: string[];
+  period: string;
+  savings?: string;
   isPopular?: boolean;
+  isBestValue?: boolean;
+  link?: string;
 }
 
 const pricingTiers: PricingTier[] = [
   {
-    name: "Básico",
-    price: "47€",
-    features: [
-      "Acceso a todos los módulos",
-      "Soporte por email",
-      "Acceso de por vida",
-      "Actualizaciones gratuitas",
-    ],
+    name: "Plan Semestral",
+    price: "229€",
+    period: "6 meses",
+    savings: "Ahorra 65€",
+    isBestValue: true,
+    link: "https://buy.stripe.com/9AQ7v09IX7fYb4Y7sJ",
   },
   {
-    name: "Premium",
-    price: "97€",
-    features: [
-      "Todo lo del plan básico",
-      "Sesiones de coaching grupales",
-      "Acceso a comunidad privada",
-      "Recursos exclusivos",
-    ],
+    name: "Plan Trimestral",
+    price: "129€",
+    period: "3 meses",
+    savings: "Ahorra 18€",
     isPopular: true,
+    link: "https://buy.stripe.com/fZedTo7AP2ZI8WQ28o",
+  },
+  {
+    name: "Plan Mensual",
+    price: "49€",
+    period: "mes",
+    link: "https://buy.stripe.com/bIY02y5sH8k2b4Y4gu",
   },
 ];
 ---
 
-<section>
-  <div class='container mx-auto px-4 relative'>
-    <h2 class='text-4xl font-bold text-center mb-12 text-white'>
-      Planes de Membresía
+<section class='py-16'>
+  <div class='container mx-auto px-4'>
+    <h2 class='text-5xl font-bold text-center mb-8 text-white'>
+      Plan de Membresía
     </h2>
-    <div class='grid md:grid-cols-2 gap-8 max-w-4xl mx-auto'>
+    <p class='text-xl text-gray-300 text-center mb-16 max-w-2xl mx-auto'>
+      El mismo programa completo, con diferentes opciones de pago para adaptarse
+      a tus necesidades
+    </p>
+    <div class='grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
       {
         pricingTiers.map((tier) => (
-          <div
-            class={`rounded-xl p-8 shadow-lg transition-all duration-300 ${
-              tier.isPopular
-                ? "bg-gradient-to-b from-purple-600 to-purple-800 text-white border-2 border-purple-400"
-                : "bg-gray-800 text-white hover:bg-gray-700"
-            }`}
-          >
-            <h3 class='text-2xl font-bold mb-4'>{tier.name}</h3>
-            <div class='text-4xl font-bold mb-6'>{tier.price}</div>
-            <ul class='space-y-4 mb-8'>
-              {tier.features.map((feature) => (
-                <li class='flex items-center'>
-                  <svg
-                    class='w-5 h-5 mr-2 text-purple-400'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='M5 13l4 4L19 7'
-                    />
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <button
-              class={`w-full py-3 px-6 rounded-lg font-semibold transition-all ${
-                tier.isPopular
-                  ? "bg-white text-purple-600 hover:bg-gray-100"
-                  : "bg-purple-600 text-white hover:bg-purple-700"
+          <div class='relative h-full group'>
+            {tier.isBestValue && (
+              <div class='absolute -top-8 left-1/2 transform -translate-x-1/2 mb-4 animate-bounce'>
+                <span class='bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-4 py-1 rounded-full text-sm font-bold'>
+                  Más elegido
+                </span>
+              </div>
+            )}
+            <div
+              class={`relative p-8 rounded-xl transition-all duration-500 h-full flex flex-col overflow-hidden ${
+                tier.isBestValue
+                  ? "bg-gradient-to-b from-yellow-500 to-yellow-700 text-white border-2 border-yellow-400 hover:from-yellow-600 hover:to-yellow-800 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20"
+                  : tier.isPopular
+                    ? "bg-gradient-to-b from-purple-600 to-purple-800 text-white border-2 border-purple-400 hover:from-purple-700 hover:to-purple-900 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                    : "bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
               }`}
             >
-              Comenzar Ahora
-            </button>
+              <div class='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
+              <div class='flex-grow flex flex-col items-center justify-center relative z-10'>
+                <h3 class='text-2xl font-bold mb-4 group-hover:scale-110 transition-transform duration-300'>
+                  {tier.name}
+                </h3>
+                <div class='flex items-baseline mb-2'>
+                  <span class='text-5xl font-bold group-hover:scale-110 transition-transform duration-300'>
+                    {tier.price}
+                  </span>
+                  <span class='ml-2 text-gray-300'>/{tier.period}</span>
+                </div>
+                {tier.savings && (
+                  <div class='text-lg font-semibold text-green-400 group-hover:scale-110 transition-transform duration-300'>
+                    {tier.savings}
+                  </div>
+                )}
+              </div>
+              {tier.link && (
+                <a href={tier.link} target='_blank'>
+                  <button
+                    class={`cursor-pointer w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 mt-8 relative z-10 ${
+                      tier.isBestValue
+                        ? "bg-white text-yellow-700 hover:bg-yellow-100 hover:scale-105"
+                        : tier.isPopular
+                          ? "bg-white text-purple-600 hover:bg-gray-100 hover:scale-105"
+                          : "bg-purple-600 text-white hover:bg-purple-700 hover:scale-105"
+                    }`}
+                  >
+                    Comenzar Ahora
+                  </button>
+                </a>
+              )}
+            </div>
           </div>
         ))
       }
