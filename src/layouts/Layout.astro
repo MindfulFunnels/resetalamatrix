@@ -50,10 +50,10 @@ const { title, isHome = false } = Astro.props;
     <!-- Contenido principal (inicialmente oculto solo en home) -->
     <div id='main-content' class={isHome ? "opacity-0" : ""}>
       <!-- Navegación siempre visible -->
-      <div class='relative z-50'>
+      <div class=''>
         <Navigation />
       </div>
-      <div class='mt-20 mb-10'>
+      <div class='mb-10'>
         <Title />
       </div>
       <slot />
