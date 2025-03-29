@@ -4,31 +4,77 @@ interface PricingTier {
   price: string;
   originalPrice: string;
   period: string;
-  savings: string;
+  discount: string;
   link: string;
 }
 
 const pricingTier: PricingTier = {
-  name: "Plan Premium",
+  name: "Plan Trimestral",
   price: "359€",
   originalPrice: "779€",
   period: "3 meses",
-  savings: "Ahorra 420€",
-  link: "https://buy.stripe.com/fZedTo7AP2ZI8WQ28o",
+  discount: "53% de descuento",
+  link: "https://buy.stripe.com/28ocPk3kz8k21uoeVe",
 };
 ---
 
 <section class='py-8 md:py-16'>
   <div class='container mx-auto px-4'>
     <h2 class='text-4xl md:text-5xl font-bold text-center text-white'>
-      Plan de Membresía Premium
+      Plan de Membresía
     </h2>
     <p
-      class='text-lg md:text-xl text-gray-300 text-center mb-8 md:mb-16 max-w-2xl mx-auto px-4 py-6'
+      class='text-lg md:text-xl text-gray-300 text-center max-w-2xl mx-auto px-4 py-6'
     >
-      Acceso completo al programa premium con un descuento especial por tiempo
-      limitado
+      Acceso completo al programa con un descuento especial por tiempo limitado
     </p>
+
+    <div class='max-w-5xl mx-auto mb-20'>
+      <div
+        class='countdown-timer w-full p-6 md:p-8 rounded-2xl backdrop-blur-sm'
+      >
+        <div class='flex justify-center items-center gap-6 md:gap-8'>
+          <div class='countdown-item flex flex-col items-center'>
+            <span
+              class='countdown-value text-4xl md:text-5xl font-bold text-white'
+              id='hours'>00</span
+            >
+            <span class='countdown-label text-base md:text-lg text-gray-300'
+              >Horas</span
+            >
+          </div>
+          <div
+            class='countdown-separator text-4xl md:text-5xl font-bold text-purple-400'
+          >
+            :
+          </div>
+          <div class='countdown-item flex flex-col items-center'>
+            <span
+              class='countdown-value text-4xl md:text-5xl font-bold text-white'
+              id='minutes'>00</span
+            >
+            <span class='countdown-label text-base md:text-lg text-gray-300'
+              >Minutos</span
+            >
+          </div>
+          <div
+            class='countdown-separator text-4xl md:text-5xl font-bold text-purple-400'
+          >
+            :
+          </div>
+          <div class='countdown-item flex flex-col items-center'>
+            <span
+              class='countdown-value text-4xl md:text-5xl font-bold text-white'
+              id='seconds'>00</span
+            >
+            <span class='countdown-label text-base md:text-lg text-gray-300'
+              >Segundos</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class='max-w-5xl mx-auto'>
       <div class='relative h-full group'>
         <div
@@ -66,24 +112,24 @@ const pricingTier: PricingTier = {
                 {pricingTier.originalPrice}
               </span>
               <div class='flex items-baseline'>
-                <span
+                <div
                   class='text-5xl md:text-6xl font-bold group-hover:scale-110 transition-transform duration-300 text-white'
                 >
                   {pricingTier.price}
-                </span>
+                </div>
                 <span class='ml-2 text-lg md:text-xl text-gray-300'
                   >/{pricingTier.period}</span
                 >
               </div>
             </div>
             <div
-              class='text-xl md:text-2xl font-bold text-green-400 group-hover:scale-110 transition-transform duration-300 mb-6 md:mb-8'
+              class='special text-xl md:text-2xl font-bold group-hover:scale-110 transition-transform duration-300 mb-6 md:mb-8'
             >
-              {pricingTier.savings}
+              {pricingTier.discount}
             </div>
             <a href={pricingTier.link} target='_blank' class='w-full md:w-auto'>
               <button
-                class='w-full md:w-auto cursor-pointer py-3 md:py-4 px-8 md:px-12 rounded-xl font-bold text-base md:text-lg transition-all duration-300 relative z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 hover:scale-105 shadow-lg shadow-purple-500/30'
+                class='w-full md:w-auto cursor-pointer py-3 md:py-4 px-8 md:px-12 rounded-xl font-bold text-base md:text-lg transition-all duration-300 relative z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 hover:scale-105 shadow-lg shadow-purple-500/30 animate-pulse-button'
               >
                 Comenzar Ahora
               </button>
@@ -94,3 +140,82 @@ const pricingTier: PricingTier = {
     </div>
   </div>
 </section>
+
+<script>
+  function startCountdown() {
+    const countdownDate = new Date();
+    countdownDate.setMinutes(countdownDate.getMinutes() + 25);
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate.getTime() - now;
+
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = String(minutes).padStart(
+        2,
+        "0"
+      );
+      document.getElementById("seconds").textContent = String(seconds).padStart(
+        2,
+        "0"
+      );
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.querySelector(".countdown-timer").innerHTML =
+          '<div class="text-2xl text-red-500 font-bold">¡Oferta expirada!</div>';
+      }
+    }, 1000);
+  }
+
+  // Iniciar el contador cuando se carga la página
+  document.addEventListener("DOMContentLoaded", startCountdown);
+</script>
+
+<style>
+  .special {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    background: radial-gradient(
+        ellipse farthest-corner at right bottom,
+        #ffd700 0%,
+        #ffcc00 8%,
+        #ffb700 30%,
+        #ffa500 40%,
+        transparent 80%
+      ),
+      radial-gradient(
+        ellipse farthest-corner at left top,
+        #ffffff 0%,
+        #fff5d4 8%,
+        #ffd700 25%,
+        #daa520 62.5%,
+        #b8860b 100%
+      );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  @keyframes pulse-button {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-pulse-button {
+    animation: pulse-button 2s infinite;
+  }
+</style>
