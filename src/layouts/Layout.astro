@@ -7,10 +7,9 @@ import Title from "@/components/Title.astro";
 
 interface Props {
   title: string;
-  isHome?: boolean;
 }
 
-const { title, isHome = false } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -57,25 +56,7 @@ const { title, isHome = false } = Astro.props;
   <body
     class='min-h-screen w-full bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 font-inter'
   >
-    <!-- Video de inicio (solo en home) -->
-    {
-      isHome && (
-        <div class='fixed inset-0 z-[100]' id='video-container'>
-          <video
-            class='w-full h-full object-cover'
-            autoplay
-            muted
-            playsinline
-            preload='auto'
-          >
-            <source src='/videos/tv-on.mp4' type='video/mp4' />
-          </video>
-        </div>
-      )
-    }
-
-    <!-- Contenido principal (inicialmente oculto solo en home) -->
-    <div id='main-content' class={isHome ? "opacity-0" : ""}>
+    <div id='main-content'>
       <!-- Navegación siempre visible -->
       <div class=''>
         <Navigation />
@@ -91,33 +72,6 @@ const { title, isHome = false } = Astro.props;
   </body>
 </html>
 
-<script>
-  const video = document.querySelector("#video-container video");
-  const mainContent = document.getElementById("main-content");
-  const hasSeenVideo = sessionStorage.getItem("hasSeenVideo");
-
-  if (video && mainContent && !hasSeenVideo) {
-    video.addEventListener("ended", () => {
-      const container = document.getElementById("video-container");
-      if (container) {
-        container.style.display = "none";
-        mainContent.classList.remove("opacity-0");
-        // Marcar que ya se vio el video
-        sessionStorage.setItem("hasSeenVideo", "true");
-      }
-    });
-  } else if (mainContent) {
-    // Si ya se vio el video o no es home, mostrar el contenido inmediatamente
-    mainContent.classList.remove("opacity-0");
-    if (video) {
-      const container = document.getElementById("video-container");
-      if (container) {
-        container.style.display = "none";
-      }
-    }
-  }
-</script>
-
 <style>
   :root {
     scroll-behavior: smooth;
@@ -127,9 +81,6 @@ const { title, isHome = false } = Astro.props;
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-  #main-content {
-    transition: opacity 0.5s ease-in-out;
   }
   .font-inter {
     font-family: "Poppins", sans-serif;
